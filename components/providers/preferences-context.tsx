@@ -46,7 +46,7 @@ export function PreferencesProvider({ children }: { children?: ReactNode }) {
   const currencyValue = useMemo<CurrencyContextValue>(
     () => ({
       currency,
-  setCurrency: (next: Currency) => {
+      setCurrency: (next: Currency) => {
         setCurrencyState(next);
         persistCurrency(next);
       }

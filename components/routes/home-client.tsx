@@ -9,6 +9,7 @@ import { GlobalOverview } from '@/components/global-overview';
 import { Movers } from '@/components/movers';
 import { MarketsTable } from '@/components/markets-table';
 import { ErrorState } from '@/components/error-state';
+import { Button } from '@/components/ui/button';
 
 export function HomeClient() {
   const { currency } = useCurrencyPreference();
@@ -88,13 +89,40 @@ export function HomeClient() {
   );
 
   return (
-    <div className="space-y-8">
-      {globalStats && <GlobalOverview stats={globalStats} currency={currency} />}
-      {hasMovers ? (
-        <Movers gainers={topGainers} losers={topLosers} currency={currency} />
+    <div className="space-y-10">
+      {globalStats ? (
+        <section className="section-container">
+          <header className="section-header">
+            <div>
+              <h1 className="typography-h1">Global Market Snapshot</h1>
+              <p className="section-description">
+                Overview of the crypto market in {currency.toUpperCase()}.
+              </p>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => mutate()}
+              type="button"
+              className="hidden sm:inline-flex"
+            >
+              Refresh data
+            </Button>
+          </header>
+          <GlobalOverview stats={globalStats} currency={currency} />
+        </section>
       ) : null}
+
+      {hasMovers ? (
+        <section id="movers" className="section-container">
+          <Movers gainers={topGainers} losers={topLosers} currency={currency} />
+        </section>
+      ) : null}
+
       {isError ? (
-        <ErrorState message="Unable to load market data." onRetry={() => mutate()} />
+        <section className="section-container">
+          <ErrorState message="Unable to load market data." onRetry={() => mutate()} />
+        </section>
       ) : (
         <MarketsTable
           coins={coins}

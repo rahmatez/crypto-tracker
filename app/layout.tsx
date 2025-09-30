@@ -6,6 +6,7 @@ import { Providers } from '@/components/providers/providers';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
+import { MobileBottomNav } from '@/components/layout/mobile-bottom-nav';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -27,8 +28,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Providers>
             <div className="flex min-h-screen flex-col">
               <Header />
-              <main className="flex-1 px-4 pb-8 pt-6 sm:px-6 lg:px-8">{children}</main>
+              <main className="flex-1">
+                <div className="container px-4 pb-24 pt-6 sm:px-6 lg:px-8">
+                  <div className="content-flow">{children}</div>
+                </div>
+              </main>
               <Footer />
+              <MobileBottomNav />
             </div>
           </Providers>
         </ThemeProvider>

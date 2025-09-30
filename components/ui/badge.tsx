@@ -2,14 +2,15 @@ import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: 'default' | 'success' | 'danger' | 'muted';
+  variant?: 'default' | 'success' | 'danger' | 'muted' | 'outline';
 }
 
 const variantClasses: Record<NonNullable<BadgeProps['variant']>, string> = {
   default: 'bg-secondary text-secondary-foreground',
-  success: 'bg-emerald-500/15 text-emerald-500',
-  danger: 'bg-red-500/15 text-red-500',
-  muted: 'bg-muted text-muted-foreground'
+  success: 'bg-[hsl(var(--success)/0.15)] text-[hsl(var(--success))]',
+  danger: 'bg-[hsl(var(--destructive)/0.15)] text-[hsl(var(--destructive))]',
+  muted: 'bg-muted text-muted-foreground',
+  outline: 'border border-border/70 text-muted-foreground'
 };
 
 export function Badge({ variant = 'default', className, ...props }: BadgeProps) {

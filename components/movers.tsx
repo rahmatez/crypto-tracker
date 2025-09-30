@@ -13,19 +13,19 @@ interface MoversProps {
 
 export function Movers({ gainers, losers, currency }: MoversProps) {
   return (
-    <section className="space-y-4">
-      <div className="flex items-center justify-between">
+    <div className="space-y-5">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Top Movers</h2>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="typography-h2">Top Movers</h2>
+          <p className="typography-body mt-1">
             Leaders and laggards over the past 24 hours.
           </p>
         </div>
-        <Button variant="ghost" asChild>
+        <Button variant="ghost" asChild className="self-start md:self-auto">
           <Link href="/watchlist">View Watchlist</Link>
         </Button>
       </div>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="card-grid">
         {gainers.map((coin) => (
           <CoinCard key={`gainer-${coin.id}`} coin={coin} currency={currency} />
         ))}
@@ -33,14 +33,14 @@ export function Movers({ gainers, losers, currency }: MoversProps) {
           <CoinCard key={`loser-${coin.id}`} coin={coin} currency={currency} />
         ))}
       </div>
-      <div className="flex items-center gap-3 text-xs text-muted-foreground">
-        <span className="flex items-center gap-1 text-emerald-500">
+      <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+        <span className="flex items-center gap-1 rounded-full bg-[hsl(var(--success)/0.15)] px-3 py-1 text-[hsl(var(--success))]">
           <ArrowUpRight className="h-3.5 w-3.5" /> Gainers
         </span>
-        <span className="flex items-center gap-1 text-red-500">
+        <span className="flex items-center gap-1 rounded-full bg-[hsl(var(--destructive)/0.15)] px-3 py-1 text-[hsl(var(--destructive))]">
           <ArrowDownRight className="h-3.5 w-3.5" /> Losers
         </span>
       </div>
-    </section>
+    </div>
   );
 }

@@ -60,7 +60,7 @@ export function WatchlistClient() {
   const handleSortChange = useCallback(
     (key: SortKey) => {
       if (key === sortKey) {
-  setSortDirection((prev: SortDirection) => (prev === 'asc' ? 'desc' : 'asc'));
+        setSortDirection((prev: SortDirection) => (prev === 'asc' ? 'desc' : 'asc'));
       } else {
         setSortKey(key);
         setSortDirection('desc');
@@ -85,13 +85,17 @@ export function WatchlistClient() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold">Watchlist</h1>
-        <p className="text-sm text-muted-foreground">
-          Your personalized list of assets, saved locally to your device.
-        </p>
-      </div>
+    <div className="space-y-10">
+      <section className="section-container">
+        <header className="section-header">
+          <div>
+            <h1 className="typography-h1">Watchlist</h1>
+            <p className="section-description">
+              Your personalized list of assets, saved locally to your device.
+            </p>
+          </div>
+        </header>
+      </section>
       <MarketsTable
         coins={filtered}
         currency={currency}
