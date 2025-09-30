@@ -15,8 +15,8 @@ const nextConfig = {
     formats: ['image/webp', 'image/avif']
   },
   
-  // Static exports for better performance
-  output: 'standalone',
+  // Static exports for better performance (disabled on Windows due to symlink issues)
+  // output: 'standalone',
   
   // Headers for security and caching
   async headers() {
