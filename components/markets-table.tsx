@@ -89,8 +89,10 @@ export function MarketsTable({
           </div>
         </div>
 
-        <div className="mt-6 hidden overflow-hidden rounded-2xl border border-border/70 bg-background/70 shadow-inner md:block">
-          <table className="min-w-full divide-y divide-border/70">
+        <div className="mt-6 hidden md:block">
+          <div className="overflow-hidden rounded-2xl border border-border/70 bg-background/70 shadow-inner">
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-border/70">
             <thead className="bg-muted/40">
               <tr>
                 {headers.map(({ label, key, align }) => (
@@ -224,7 +226,9 @@ export function MarketsTable({
                     );
                   })}
             </tbody>
-          </table>
+              </table>
+            </div>
+          </div>
         </div>
 
         <div className="mt-4 space-y-3 md:hidden">

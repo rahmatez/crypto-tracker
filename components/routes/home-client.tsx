@@ -45,8 +45,8 @@ export function HomeClient() {
       } else {
         params.delete('sortDirection');
       }
-      const queryString = params.toString();
-      router.replace(`${pathname}${queryString ? `?${queryString}` : ''}`);
+  const queryString = params.toString();
+  router.replace(`${pathname}${queryString ? `?${queryString}` : ''}`, { scroll: false });
     },
     [pathname, router, searchParams]
   );

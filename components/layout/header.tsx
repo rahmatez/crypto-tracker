@@ -35,7 +35,7 @@ function SearchInput() {
       params.delete('query');
     }
     const queryString = params.toString();
-    router.replace(queryString ? `/?${queryString}` : '/');
+  router.replace(queryString ? `/?${queryString}` : '/', { scroll: false });
   }, [debounced, router, searchParams]);
 
   return (
