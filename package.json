@@ -15,8 +15,7 @@
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "test:all": "pnpm test:unit && pnpm test:e2e",
-    "prepare": "playwright install --with-deps",
-    "postinstall": "pnpm prepare",
+    "prepare": "node scripts/install-playwright.mjs",
     "clean": "rm -rf .next out dist",
     "preview": "pnpm build && pnpm start",
     "validate-ci": "pnpm type-check && pnpm lint && pnpm test && pnpm build"
