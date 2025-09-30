@@ -1,0 +1,16 @@
+{
+  "name": "CryptoTracker",
+  "short_name": "CryptoTracker",
+  "description": "Live cryptocurrency dashboard powered by CoinGecko API.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
