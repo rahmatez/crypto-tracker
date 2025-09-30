@@ -17,5 +17,8 @@ export default defineConfig({
       '@/components': path.resolve(__dirname, './components'),
       '@/app': path.resolve(__dirname, './app')
     }
+  },
+  esbuild: {
+    jsx: 'automatic'
   }
 });

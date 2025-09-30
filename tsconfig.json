@@ -30,7 +30,9 @@
       ]
     },
     "types": [
-      "node"
+      "node",
+      "vitest",
+      "vitest/globals"
     ],
     "esModuleInterop": true,
     "plugins": [
