@@ -10,6 +10,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'assets.coingecko.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'coin-images.coingecko.com'
       }
     ],
     formats: ['image/webp', 'image/avif']

@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { MarketCoin } from '@/lib/types';
 import { Badge } from './ui/badge';
 import { Card, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { CoinImage } from './coin-image';
 import { formatCurrency, formatPercent } from '@/lib/format';
 import type { Currency } from '@/lib/storage';
 
@@ -26,15 +26,18 @@ export function CoinCard({ coin, currency }: CoinCardProps) {
       <Card className="bg-card/60 backdrop-blur-sm">
         <CardHeader className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <Image
-              src={coin.image}
-              alt={coin.name}
-              width={40}
-              height={40}
-              className="rounded-full border border-border/80 bg-background"
-            />
-            <div>
-              <CardTitle>{coin.name}</CardTitle>
+            <div className="relative">
+              <CoinImage
+                src={coin.image}
+                alt={`${coin.name} logo`}
+                width={40}
+                height={40}
+                className="rounded-full border border-border/80 bg-background shadow-sm"
+                priority={coin.market_cap_rank <= 10}
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <CardTitle className="truncate">{coin.name}</CardTitle>
               <CardDescription className="uppercase text-xs tracking-wide text-muted-foreground">
                 {coin.symbol}
               </CardDescription>

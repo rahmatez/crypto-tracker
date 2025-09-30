@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import DOMPurify from 'dompurify';
 import { ArrowLeft, ExternalLink, Info } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
@@ -12,6 +11,7 @@ import { formatCurrency, formatPercent } from '@/lib/format';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { WatchToggle } from '@/components/watch-toggle';
+import { CoinImage } from '@/components/coin-image';
 import { cn } from '@/lib/utils';
 
 interface CoinClientProps {
@@ -79,12 +79,13 @@ export function CoinClient({ coinId }: CoinClientProps) {
       <div className="flex flex-col gap-4 rounded-2xl border border-border bg-card/80 p-6 backdrop-blur">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
-            <Image
+            <CoinImage
               src={detail.image.large}
-              alt={detail.name}
+              alt={`${detail.name} logo`}
               width={56}
               height={56}
-              className="rounded-full border border-border/70 bg-background"
+              className="rounded-full border border-border/70 bg-background shadow-lg"
+              priority={true}
             />
             <div>
               <div className="flex items-center gap-3">

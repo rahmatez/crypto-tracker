@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 import { ArrowUpDown, RefreshCcw } from 'lucide-react';
 import type { ChangeEvent } from 'react';
 import type { MarketCoin } from '@/lib/types';
@@ -10,6 +9,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Sparkline } from './sparkline';
 import { WatchToggle } from './watch-toggle';
+import { CoinImage } from './coin-image';
 import type { SortDirection, SortKey } from '@/lib/useMarkets';
 import { Skeleton } from './ui/skeleton';
 
@@ -164,15 +164,18 @@ export function MarketsTable({
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-3">
-                      <Image
-                        src={coin.image}
-                        alt={coin.name}
-                        width={40}
-                        height={40}
-                        className="rounded-full border border-border/60 bg-background"
-                      />
-                      <div>
-                        <p className="font-semibold">{coin.name}</p>
+                      <div className="relative">
+                        <CoinImage
+                          src={coin.image}
+                          alt={`${coin.name} logo`}
+                          width={40}
+                          height={40}
+                          className="rounded-full border border-border/60 bg-background shadow-sm"
+                          priority={coin.market_cap_rank <= 10}
+                        />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold truncate">{coin.name}</p>
                         <p className="text-xs uppercase text-muted-foreground">{coin.symbol}</p>
                       </div>
                     </div>
